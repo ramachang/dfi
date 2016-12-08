@@ -35,10 +35,8 @@
 					    $sliderControls = $slider.next().filter('.controls'),
 					    $items = $sliderContainer.find( options.items ),
 					    originalWidth = 1;
-					offset = 0;
-					if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-					   offset = 0.5;
-					}
+					offset = 0.5;
+					
 					$items.each(function(){ originalWidth += $(this).outerWidth(true) + offset });
 					$sliderContainer.width( originalWidth );
 
