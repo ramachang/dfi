@@ -264,7 +264,7 @@ a:hover {
 #footer div {
   margin-bottom: 20px; }
 
-/* overlay for modal */
+/* lightbox */
 .modal-backdrop.in {
   background-color: #000;
   filter: alpha(opacity=90);
@@ -272,6 +272,9 @@ a:hover {
   position: fixed;
   width: 100%;
   height: 100%; }
+
+.lightbox-modal .glyphicon-remove {
+  font-size: 14px; }
 
 @media (min-width: 991px) {
   .navbar-brand {
