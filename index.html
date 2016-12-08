@@ -120,7 +120,8 @@
     		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 nopadding" id="poster-slider-container">
     			
     			<div data-ng-show="!posters_preloaded" id="poster-placeholder">
-			    </div>
+    				<p translate="GETTING_POSTER">Henter plakat</p>
+    			</div>
     			
   			  <div uib-carousel active="active_posters" data-ng-show="posters_preloaded" interval="interval" no-wrap="noWrapSlides">
 			      <div uib-slide data-ng-repeat="(key, value) in movie.posters track by key" index="key">
@@ -184,8 +185,9 @@
 			
 			<!--Stills-->	
 			<div class="row" id="stills-slider-container">
+				<p id="stills-placeholder" ng-show="!images_preloaded" translate="GETTING_STILLS">Henter billeder</p>
 				<div id="stills-slider" class="slider">
-			  	<ul>
+					<ul>
 			  		<li data-ng-repeat="(key, value) in movie.images">
 			  			<a data-ng-click="openLightboxModal(key)">
 				  			<img data-ng-src="{{value}}" class="img-responsive" data-ng-show="images_preloaded" />

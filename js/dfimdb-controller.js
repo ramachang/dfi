@@ -158,7 +158,9 @@ app.controller("dfimdbCtrl", function($scope, $http, Lightbox, $location, preloa
     SEE_ALL: 'Se alle',
     YEAR: 'Årstal',
     RUNTIME: 'Spilletid',
-    SEARCH: 'Søg'
+    SEARCH: 'Søg',
+    GETTING_POSTER: 'Henter plakat',
+    GETTING_STILLS: 'Henter billeder'
   });
   $translateProvider.translations('en', {
     BUTTON_LANG_EN: 'english',
@@ -169,7 +171,9 @@ app.controller("dfimdbCtrl", function($scope, $http, Lightbox, $location, preloa
     SEE_ALL: 'See all',
     YEAR: 'Year',
     RUNTIME: 'Runtime',
-    SEARCH: 'Search'
+    SEARCH: 'Search',
+    GETTING_POSTER: 'Getting poster',
+    GETTING_STILLS: 'Getting images'
   });
   $translateProvider.preferredLanguage('da');
   $translateProvider.useSanitizeValueStrategy('escape');

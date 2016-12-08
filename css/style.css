@@ -171,6 +171,14 @@ a:hover {
   background-color: #666;
   height: 500px; }
 
+#poster-placeholder p {
+  color: #fff;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 245px;
+  float: left; }
+
 #poster-slider-container .control-bar {
   height: 34px;
   background-color: #000; }
@@ -207,6 +215,14 @@ a:hover {
 /* stills */
 #stills-slider-container {
   background-color: #000; }
+
+#stills-placeholder {
+  color: #fff;
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 100px;
+  float: left;
+  text-align: center; }
 
 #stills-slider-container .prev-page .glyphicon,
 #stills-slider-container .next-page .glyphicon {
