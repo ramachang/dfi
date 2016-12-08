@@ -140,7 +140,7 @@
 			  		<h1 >{{movie.text.title | uppercase}} <small></small></h1>
 				  	<p class="bold uppercase">
 				  		<span>{{movie.year}}</span>, 
-				  		<span data-ng-repeat="(key, value) in movie.text.genres">{{ value.name }}, </span> 
+				  		<span data-ng-repeat="(key, value) in movie.text.genres">{{ value }}, </span> 
 				  		<span>{{movie.runtime}} min.</span>
 				  	</p>	
 				  	<p class="uppercase smaller"><span class="bold" translate="DIRECTION">Instruktion: </span>
