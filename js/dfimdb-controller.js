@@ -24,6 +24,7 @@ app.controller("dfimdbCtrl", function($scope, $http, Lightbox, $location, preloa
 	$http.get('data/movies.min.json').
     success(function(data, status, headers, config) {
       all_movies = data;
+            
       loadMovieData();
     }).
     error(function(data, status, headers, config) {

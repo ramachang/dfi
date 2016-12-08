@@ -2,64 +2,66 @@
 <html data-ng-app="dfimdbApp">
   <head>
     <title >DFIMDB</title>
+    <link rel="shortcut icon" href="http://www.dfi.dk/~/media/Logoer%20og%20ikoner/favicon.ico">
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <meta name="description" content="Application wide description" />
+	  <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta property="og:title" content="DFI Filmdatabasen" />
     <meta property="og:url" content="" />
     <meta property="og:description" content="" />
     <meta property="og:image" content="" />
 	  
-	  <link rel="shortcut icon" href="http://www.dfi.dk/~/media/Logoer%20og%20ikoner/favicon.ico">
-	  
-	  
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		
 		<script src="js/ui-bootstrap-tpls-2.3.0.min.js"></script>
 		<script src="js/angular-translate.min.js"></script>
-		<script src="js/update-meta.min.js"></script>
 		
-		<!-- lightbox -->
-		<script src="js/angular-bootstrap-lightbox.min.js"></script>
-    <link rel="stylesheet" href="css/angular-bootstrap-lightbox.min.css">
-    
 		<script src="js/dfimdb-controller.js"></script>
+		<script src="js/update-meta.min.js"></script>
+		<script src="js/preloader.js"></script>
+		<script src="js/angular-bootstrap-lightbox.min.js"></script>
     
-    <script src="js/preloader.js"></script>
     <script src="js/lemmon-slider.js"></script>
     <script src="js/script.js"></script>
 		
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/angular-bootstrap-lightbox.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     
   </head>
   <body data-ng-controller="dfimdbCtrl" class="header-visible">
-      
-      <update-title title="{{ movie.text.title }}"></update-title>
-      <update-meta name="description" content="{{movie.text.summary.String.substring(0, 160);}}"></update-meta>
-    	<update-meta property="og:title" content="DFI: {{ movie.text.title }}"></update-meta>
-	    <update-meta property="og:url" content="{{url}}" /></update-meta>
-    	<update-meta property="og:description" content="{{movie.text.summary.String.substring(0, 160);}}" /></update-meta>
-    	<update-meta property="og:image" content="{{movie.posters[0]}}" /></update-meta>
-    	
-	    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" id="header">
-	    	<div class="container-fluid nopadding">
-    		  <div class="container nopadding" id="head">
-			    	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopadding">
-				    	<img src="images/logotop-inverse.gif" />
-						</div>			    	
-			    	
-			    	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pull-right text-right smaller" id="language-select">
-              <a data-ng-click="changeLanguage('da')" class="{{language == 'da' ? 'active' : ''}}">DA</a> /
-              <a data-ng-click="changeLanguage('en')" class="{{language == 'en' ? 'active' : ''}}">EN</a>
-            </div>
-			    	
-			    </div>
-			    
-			    <div class="container nopadding">
+    
+    <!--Update metadata-->	  
+    <update-title title="{{ movie.text.title }}"></update-title>
+    <update-meta name="description" content="{{movie.text.summary.String.substring(0, 160);}}"></update-meta>
+  	<update-meta property="og:title" content="DFI: {{ movie.text.title }}"></update-meta>
+    <update-meta property="og:url" content="{{url}}" /></update-meta>
+  	<update-meta property="og:description" content="{{movie.text.summary.String.substring(0, 160);}}" /></update-meta>
+  	<update-meta property="og:image" content="{{movie.posters[0]}}" /></update-meta>
+  	
+  	<!--Header/Navigation-->	
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" id="header">
+    	<div class="container-fluid nopadding">
+  						  
+  		  <div class="container nopadding" id="head">
+	  		  <!--logo-->
+		    	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 nopadding">
+			    	<img src="images/logotop-inverse.gif" />
+					</div>			    	
+		    	<!--language select-->
+		    	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pull-right text-right smaller" id="language-select">
+            <a data-ng-click="changeLanguage('da')" class="{{language == 'da' ? 'active' : ''}}">DA</a> /
+            <a data-ng-click="changeLanguage('en')" class="{{language == 'en' ? 'active' : ''}}">EN</a>
+          </div>
+		    </div>
+		    
+		    <!--Navigation-->
+		    <div class="container nopadding">
+		    	
+		    	<!--mobile logo and burger-->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-ng-init="navCollapsed = true" data-ng-click="navCollapsed = !navCollapsed">
 							<span class="sr-only">Toggle navigation</span>
@@ -68,26 +70,20 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="#"><img src="images/mobile-logo.gif" /></a>
-				    
 					</div>
+					
+					<!--menu-->
 					<div class="collapse navbar-collapse" uib-collapse="navCollapsed" data-ng-class="!navCollapsed && 'in'" data-ng-click="navCollapsed=true" id="main-menu">
-						
+					
 						<ul class="nav navbar-nav">
 							<li><a href="#">Nyheder</a></li>
 							<li><a href="#">Cinemateket</a></li>
-							<!--
-							<li uib-dropdown>
-				        <a uib-dropdown-toggle data-ng-disabled="disabled" href="#">Cinemateket</a>
-				        <ul uib-dropdown-menu>
-				        </ul>
-				      </li>
-				      -->
-				      <li><a href="#">Filmdatabasen</a></li>
+							<li><a href="#">Filmdatabasen</a></li>
 							<li><a href="#">Tal & fakta</a></li>
 							<li><a href="#">Branche & støtte</a></li>
 							<li><a href="#">Børn & unge</a></li>
 						</ul>
-						
+					
 				  	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-right" id="search">
 				    	<div id="imaginary_container"> 
 				      	<div class="input-group stylish-input-group">
@@ -100,13 +96,13 @@
 				        </div>
 				      </div>
 				    </div>
-						    
-					</div>
-				</div>	
-			</nav>
-			
+				    
+					</div><!--menu end-->
+				</div><!--navigation end-->
+			</div><!--head end-->
+		</nav><!--header/navigation end-->
 		
-			
+		<!--Breadcrumb-->		
     <div class="container-fluid light" id="breadcrumb">
     	<div class="container">
     		<ol class="breadcrumb">
@@ -117,30 +113,31 @@
     	</div>	
     </div>
     
+    <!--Content-->	
     <div class="container">
     	<div class="row light">
+    		<!--posters-->
     		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 nopadding" id="poster-slider-container">
     			
-    			<div>
-				    <div uib-carousel active="active_posters" interval="interval" no-wrap="noWrapSlides">
-				      <div uib-slide data-ng-repeat="(key, value) in movie.posters track by key" index="key">
-				      	<img data-ng-src="{{value}}" style="margin:auto; display:{{posters_preloaded ? 'block' : 'none'}}" class="img-responsive">
-				      </div>
-				      
-				    </div>
-				    <div data-ng-show="movie.posters.length > 1" class="control-bar"></div>
-				  </div>
-			  	
-			  	
+    			<div data-ng-show="!posters_preloaded" id="poster-placeholder">
+			    </div>
+    			
+  			  <div uib-carousel active="active_posters" data-ng-show="posters_preloaded" interval="interval" no-wrap="noWrapSlides">
+			      <div uib-slide data-ng-repeat="(key, value) in movie.posters track by key" index="key">
+			      	<img data-ng-src="{{value}}"  style="margin:auto;" class="img-responsive">
+			      </div>
+			    </div>
+			    
+			    <div data-ng-show="movie.posters.length > 1 && posters_preloaded" class="control-bar">
+			    </div>
 				  
-			  	
-			  	
 			  </div>
+			  
+			  <!--movie text-->
 			  <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 nopadding" id="info-box">
-			  	
+			  	<!--topbar (title and short info)-->	
 			  	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="title-bar">
-			  	<!--<div class="row" id="title-bar">-->
-				  	<h1 >{{movie.text.title | uppercase}} <small></small></h1>
+			  		<h1 >{{movie.text.title | uppercase}} <small></small></h1>
 				  	<p class="bold uppercase">
 				  		<span>{{movie.year}}</span>, 
 				  		<span data-ng-repeat="(key, value) in movie.text.genres">{{ value.name }}, </span> 
@@ -148,7 +145,6 @@
 				  	</p>	
 				  	<p class="uppercase smaller"><span class="bold" translate="DIRECTION">Instruktion: </span>
 			  			<a href="" data-ng-repeat="(key, value) in movie.credits.direction">{{value.first_name.String+" "+value.last_name}}{{$last ? '' : ', '}}</a>
-				  		<!--<span>Genre: </span> span>Spilletid: </span> <span>Årstal: </span><span>{{movie.year}}</span>-->
 				  	</p>
 				  	<p class="uppercase smaller"><span class="bold" translate="APPERANCE">Medvirkende: </span>
 				  		<span data-ng-repeat="(key, value) in movie.credits.appearance | limitTo: 4"><a href="" >{{value.first_name.String+" "+value.last_name}}</a>, </span>  
@@ -157,10 +153,10 @@
 					  <p class="uppercase smaller"><span class="bold" translate="Production">Produktion: </span>
 				  		<span data-ng-repeat="(key, value) in movie.production_companies.primary | limitTo: 4"><a href="" >{{value.name}}</a>, </span>  
 				  		<a data-ng-click="scrollTo('production')" class="italic neutral lowercase" translate="SEE_ALL">Se alle</a>
-					  </p>	
-					  
+					  </p>
 				  </div>
-				  	
+				  
+				  <!--Movie summary and facts-->		
 			  	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="description-box">
 				  	<p>
 				  		{{movie.text.summary.String}}
@@ -182,32 +178,28 @@
 						<p data-ng-repeat="(key, value) in movie.text.premiere_dates" class="smaller uppercase">
 					  	<span class="bold">{{value.type}} </span><br/><span>{{value.date | date}}</span>
 						</p>
-						
 					</div>	
 			  </div>
 			</div>
 			
-			
+			<!--Stills-->	
 			<div class="row" id="stills-slider-container">
 				<div id="stills-slider" class="slider">
 			  	<ul>
 			  		<li data-ng-repeat="(key, value) in movie.images">
 			  			<a data-ng-click="openLightboxModal(key)">
-				  			<img data-ng-src="{{value}}" class="img-responsive" style="display:{{images_preloaded ? 'block' : 'none'}}" />
+				  			<img data-ng-src="{{value}}" class="img-responsive" data-ng-show="images_preloaded" />
 				  		</a>	
 				  	</li>
 					 </ul>
 			  </div>
 			   <div class="controls">
 			   	<div class="prev-page pull-left"><div class="glyphicon glyphicon-chevron-left"></div></div> 
-			   	<!--
-			    <a href="#" class="prev-slide">Prev Slide</a> 
-			    <a href="#" class="next-slide">Next Slide</a> 
-			    -->
-			    <div class="next-page pull-right"><div class="glyphicon glyphicon-chevron-right"></div></div>
+			   	<div class="next-page pull-right"><div class="glyphicon glyphicon-chevron-right"></div></div>
 				</div>
 			</div>  
 			
+			<!--Apperance-->	
 			<div class="row light padding-top-bottom border-bottom">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<h2 id="apperance" translate="APPERANCE">Medvirkende</h2>
@@ -218,7 +210,7 @@
 				  </div>
 				</div>
 			</div>
-			
+			<!--Direction, productions, stills - credit -->	
 			<div class="row light padding-top-bottom">
 			  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			  	<div data-ng-show="movie.credits.direction">
@@ -247,31 +239,29 @@
 			</div>
     </div>
     
-    
+    <!--Footer-->	
     <div class="container-fluid" id="footer">
-    		<div class="container smaller">
-		    	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-	    			DET DANSKE FILMINSTITUT <br/>
-						/ DANISH FILM INSTITUTE	<br/>
-						EAN-NR: 5798000794085 <br/>
-						CVR-NR: 56858318
-	    		</div>
-	    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-	    			GOTHERSGADE 55<br/>
-						1123 KØBENHAVN K
-	    		</div>
-	    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-	    			TLF. +45 3374 3400<br/>
-						FAX +45 3374 3401<br/>
-						E-MAIL: DFI@DFI.DK
-	    		</div>
-	    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-	    			CINEMATEKETS BILLETSALG<br/>
-						TLF. +45 3374 3412
-	    		</div>
-	    	</div>	
-    			
-    	
+  		<div class="container smaller">
+	    	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    			DET DANSKE FILMINSTITUT <br/>
+					/ DANISH FILM INSTITUTE	<br/>
+					EAN-NR: 5798000794085 <br/>
+					CVR-NR: 56858318
+    		</div>
+    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    			GOTHERSGADE 55<br/>
+					1123 KØBENHAVN K
+    		</div>
+    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    			TLF. +45 3374 3400<br/>
+					FAX +45 3374 3401<br/>
+					E-MAIL: DFI@DFI.DK
+    		</div>
+    		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    			CINEMATEKETS BILLETSALG<br/>
+					TLF. +45 3374 3412
+    		</div>
+    	</div>
     </div>
     
   </body>

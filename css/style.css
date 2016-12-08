@@ -166,6 +166,11 @@ a:hover {
 #poster-slider-container {
   /*background-color: $primary-color;*/ }
 
+#poster-placeholder {
+  width: 100%;
+  background-color: #666;
+  height: 500px; }
+
 #poster-slider-container .control-bar {
   height: 34px;
   background-color: #000; }
