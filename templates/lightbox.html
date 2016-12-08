@@ -1,0 +1,26 @@
+
+<div class=modal-body ng-swipe-left=Lightbox.nextImage() ng-swipe-right=Lightbox.prevImage()>
+	<div class=lightbox-nav>
+		<div class=close aria-hidden=true ng-click=$dismiss()><span class="glyphicon glyphicon-remove"></span></div>
+		
+	</div>
+	<div class=lightbox-image-container>
+		<div class="buttons" ng-if="Lightbox.images.length > 1">
+			<a class="prev" ng-click=Lightbox.prevImage()><span class="glyphicon glyphicon-chevron-left"></span></a> 
+			<a class="next" ng-click=Lightbox.nextImage()><span class="glyphicon glyphicon-chevron-right"></span></a>
+		</div>
+		
+		<img ng-if=!Lightbox.isVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}}>
+		
+		<div class=lightbox-image-caption>
+			<span>{{Lightbox.imageCaption}}</span>
+		</div>
+		
+		<div ng-if=Lightbox.isVideo(Lightbox.image) class="embed-responsive embed-responsive-16by9">
+			<video ng-if=!Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} controls autoplay></video>
+			<embed-video ng-if=Lightbox.isSharedVideo(Lightbox.image) lightbox-src={{Lightbox.imageUrl}} ng-href={{Lightbox.imageUrl}} iframe-id=lightbox-video class=embed-responsive-item>
+				<a ng-href={{Lightbox.imageUrl}}>Watch video</a>
+			</embed-video>
+		</div>
+	</div>
+</div>
